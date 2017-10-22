@@ -7,7 +7,7 @@ class profile::docker (
   class { '::profile::docker::repo': }
 
   # deps
-  package { ['linux-image-extra-4.4.0-93-generic','linux-image-extra-virtual', 'apt-transport-https', 'ca-certificates',
+  package { ["linux-image-extra-${::kernelrelease}",'linux-image-extra-virtual', 'apt-transport-https', 'ca-certificates',
              'curl', 'software-properties-common']:
     ensure => installed,
     before => Class['::profile::docker::repo'],
