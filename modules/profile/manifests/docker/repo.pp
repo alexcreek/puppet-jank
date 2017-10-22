@@ -1,20 +1,14 @@
 #
 class profile::docker::repo {
-  exec { 'install_docker_gpg_key':
-    command => '/usr/bin/curl -fsSL -o docker.gpg https://download.docker.com/linux/ubuntu/gpg && apt-key add docker.gpg',
-    cwd     => '/var/lib/apt/',
-    creates => '/var/lib/apt/docker.gpg',
-  }
+  include ::apt
 
-  exec { 'install_docker_repo':
-    command     => '/usr/bin/add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"',
-    refreshonly => true,
-    subscribe   => Exec['install_docker_gpg_key'],
-  }
-
-  exec { 'update_apt_cache':
-    command     => '/usr/bin/apt-get update',
-    refreshonly => true,
-    subscribe   => Exec['install_docker_repo'],
+  apt::source { 'docker':
+    location => 'https://download.docker.com/linux/ubuntu',
+    release  => 'zesty',
+    repos    => 'stable',
+    key      => {
+      'id'     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
+      'source' => 'https://download.docker.com/linux/ubuntu/gpg',
+    },
   }
 }
