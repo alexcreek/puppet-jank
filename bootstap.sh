@@ -16,3 +16,6 @@ apt-get install -y puppet-agent
 # pull upstream modules
 popd
 /opt/puppetlabs/puppet/bin/r10k puppetfile install
+
+# patch and reboot because kernel exploits suck ass
+apt-get update && apt-get -y upgrade && reboot
