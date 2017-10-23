@@ -1,7 +1,5 @@
 #
 class profile::docker::repo {
-  include ::apt
-
   apt::source { 'docker':
     location => 'https://download.docker.com/linux/ubuntu',
     release  => $::os['distro']['codename'],
