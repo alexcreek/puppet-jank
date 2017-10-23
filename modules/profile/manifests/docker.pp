@@ -25,7 +25,8 @@ class profile::docker (
   }
 
   service { 'docker':
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
+    require => Package['docker-ce'],
   }
 }
