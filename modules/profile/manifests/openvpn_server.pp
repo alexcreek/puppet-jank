@@ -49,7 +49,7 @@ class profile::openvpn_server {
     chain  => 'FORWARD',
     action => 'accept',
     proto  => 'all',
-    state  => ['RELATED','ESTABLISHED'],
+    state  => ['NEW','RELATED','ESTABLISHED'],
   }
 
   firewall { '4 snat for clients':
