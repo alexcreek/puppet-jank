@@ -8,7 +8,7 @@ class profile::openvpn_server {
     organization => 'Prestige Worldwide',
     email        => 'root@fuckoff.io',
     server       => '10.10.10.0 255.255.255.0',
-    push         => ['dhcp-option DNS 8.8.8.8'],
+    push         => ['dhcp-option DNS 10.10.10.1'],
   }
 
   Openvpn::Client {
