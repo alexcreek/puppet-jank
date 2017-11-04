@@ -60,4 +60,14 @@ class profile::openvpn_server {
     source   => '10.10.10.0/24',
     table    => 'nat',
   }
+
+  firewall { '5 port forward 51413':
+    chain   => 'PREROUTING',
+    jump    => 'DNAT',
+    proto   => 'tcp',
+    iniface => 'eth0',
+    dport   => '51413',
+    todest  => '10.10.10.2:51413',
+    table   => 'nat',
+  }
 }
