@@ -13,16 +13,22 @@ class profile::openvpn_server {
 
   Openvpn::Client {
     remote_host => $::ipaddress,
-  }
-
-  openvpn::client { 'client1':
     server      => 'vpnserver',
   }
 
-  openvpn::client_specific_config { 'client1':
+  openvpn::client { ['hq', 'mobile']:}
+  
+  Openvpn::Client_specific_config {
     server           => 'vpnserver',
     redirect_gateway => true,
+  }
+
+  openvpn::client_specific_config { 'hq':
     ifconfig         => '10.10.10.2 255.255.255.0',
+  }
+
+  openvpn::client_specific_config { 'mobile':
+    ifconfig         => '10.10.10.3 255.255.255.0',
   }
 
   # to allow saving rules
