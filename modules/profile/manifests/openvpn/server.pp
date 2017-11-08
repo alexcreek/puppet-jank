@@ -1,5 +1,5 @@
 #
-class profile::openvpn_server {
+class profile::openvpn::server {
   openvpn::server { 'vpnserver':
     topology     => 'subnet',
     proto        => 'udp',

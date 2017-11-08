@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenVPN service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/sbin/openvpn --config /etc/openvpn/client.ovpn
+WorkingDirectory=/etc/openvpn
+
+[Install]
+WantedBy=multi-user.target

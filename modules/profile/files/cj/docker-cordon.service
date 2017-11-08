@@ -1,0 +1,11 @@
+[Unit]
+Description=Load Firewall rules to cordon docker
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/iptables-restore -n /etc/iptables/rules.v4
+ExecReload=/sbin/iptables-restore -n /etc/iptables/rules.v4
+
+[Install]
+WantedBy=multi-user.target
