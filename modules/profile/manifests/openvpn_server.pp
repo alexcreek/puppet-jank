@@ -2,6 +2,7 @@
 class profile::openvpn_server {
   openvpn::server { 'vpnserver':
     topology     => 'subnet',
+    proto        => 'udp',
     country      => 'US',
     province     => 'CA',
     city         => 'San Fran',
@@ -14,6 +15,7 @@ class profile::openvpn_server {
   Openvpn::Client {
     remote_host => $::ipaddress,
     server      => 'vpnserver',
+    proto       => 'udp',
   }
 
   openvpn::client { ['hq', 'mobile']:}
