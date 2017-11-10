@@ -17,5 +17,8 @@ apt-get install -y puppet-agent
 popd
 /opt/puppetlabs/puppet/bin/r10k puppetfile install
 
+# install data
+mv $PWD/* $PWD/.git /etc/puppetlabs/code/environments/production/
+
 # patch and reboot because kernel exploits suck ass
 apt-get update && apt-get -y upgrade && reboot
