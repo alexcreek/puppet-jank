@@ -1,4 +1,4 @@
 #
-class role::rutorrent {
+class role::cj {
   include profile::cj
 }
