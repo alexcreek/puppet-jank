@@ -1,5 +1,6 @@
 #
-class role::openvpn_server {
+class role::vpnserver {
+  include role::baseline
   include profile::openvpn::server
   include profile::bind
 }

@@ -25,9 +25,15 @@ popd
 # install data
 PUPPET_DIR='/etc/puppetlabs/code/environments/production/'
 echo -e "${GREEN}[*] Installing data into ${PUPPET_DIR}${RESTORE}"
-rm -rf ${PUPPET_DIR}/*
-mv $PWD/* $PWD/.git $PUPPET_DIR/
-ln -s $PUPPET_DIR ~/production
+if [[ $PWD =~ 'puppet-jank' ]]; then
+  rm -rf ${PUPPET_DIR}/*
+  mv $PWD/* $PWD/.git $PUPPET_DIR/
+  if [[ -L ~/production ]]; then
+    :
+  else
+    ln -s $PUPPET_DIR ~/production
+  fi
+fi
 
 # patch and reboot because kernel exploits suck ass
 echo -e "${GREEN}[*] Patching and rebooting${RESTORE}"

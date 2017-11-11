@@ -3,7 +3,7 @@ class profile::cj {
   include profile::openvpn::client
   include profile::rutorrent
 
-  service { 'cordon-docker':
+  service { 'docker-cordon':
     ensure => running,
     enable => true,
   }
@@ -13,15 +13,23 @@ class profile::cj {
     owner  => root,
     group  => root,
     mode   => '0755',
-    source => 'puppet:///modules/profiles/cj/docker-cordon.service',
+    source => 'puppet:///modules/profile/cj/docker-cordon.service',
   }
 
-  file { '/etc/iptables/rules.v4':
-    ensure => file,
+  file { '/etc/iptables':
+    ensure => directory,
     owner  => root,
     group  => root,
     mode   => '0755',
-    source => 'puppet:///modules/profiles/cj/rules.v4',
+  }
+
+  file { '/etc/iptables/rules.v4':
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+    source  => 'puppet:///modules/profile/cj/rules.v4',
+    require => File['/etc/iptables'],
   }
 
   file { '/etc/systemd/system/docker.service.d':
@@ -37,7 +45,7 @@ class profile::cj {
     owner  => root,
     group  => root,
     mode   => '0755',
-    source => 'puppet:///modules/profiles/cj/docker-cordon.conf',
+    source => 'puppet:///modules/profile/cj/docker-cordon.conf',
     require => File['/etc/systemd/system/docker.service.d/']
   }
 }

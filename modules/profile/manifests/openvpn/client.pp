@@ -9,7 +9,7 @@ class profile::openvpn::client {
     owner  => root,
     group  => root,
     mode   => '0755',
-    source => 'puppet:///modules/profiles/openvpn/client.service',
+    source => 'puppet:///modules/profile/openvpn/client.service',
   }
 
   service { 'openvpn':
