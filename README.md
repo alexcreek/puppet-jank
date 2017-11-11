@@ -8,5 +8,5 @@ bash bootstap.sh
 
 ### Run puppet 
 ```
-puppet apply -t manifests/docker.pp --modulepath=modules/
+puppet apply -e 'include foo::bar'
 ```
