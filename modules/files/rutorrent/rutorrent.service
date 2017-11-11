@@ -1,8 +1,0 @@
-[Unit]
-Description=ruTorrent
-
-[Service]
-Type=simple
-WorkingDirectory=/opt/rutorrent
-ExecStart=/usr/local/bin/docker-compose up
-ExecStop=/usr/local/bin/docker-compose stop
