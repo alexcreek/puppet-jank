@@ -1,0 +1,20 @@
+version: "2"
+services:
+  rutorrent:
+    image: datadog/docker-dd-agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    networks:
+      - datadog
+    environment:
+      - API_KEY=<%= $apikey %>
+      - SD_BACKEND=docker
+networks:
+  datadog:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.8/29
