@@ -3,6 +3,7 @@ class profile::openvpn::server {
   openvpn::server { 'vpnserver':
     topology     => 'subnet',
     proto        => 'udp',
+    local        => $::ipaddress,
     cipher       => 'AES-128-CBC',
     country      => 'US',
     province     => 'CA',
@@ -50,7 +51,7 @@ class profile::openvpn::server {
     chain    => 'FORWARD',
     action   => 'accept',
     proto    => 'all',
-    outiface => 'eth0',
+    outiface => 'ens3',
     source   => '10.10.10.0/24',
     state    => ['NEW'],
   }
@@ -66,7 +67,7 @@ class profile::openvpn::server {
     chain    => 'POSTROUTING',
     jump     => 'MASQUERADE',
     proto    => 'all',
-    outiface => 'eth0',
+    outiface => 'ens3',
     source   => '10.10.10.0/24',
     table    => 'nat',
   }
@@ -75,7 +76,7 @@ class profile::openvpn::server {
     chain   => 'PREROUTING',
     jump    => 'DNAT',
     proto   => 'tcp',
-    iniface => 'eth0',
+    iniface => 'ens3',
     dport   => '51413',
     todest  => '10.10.10.2:51413',
     table   => 'nat',
