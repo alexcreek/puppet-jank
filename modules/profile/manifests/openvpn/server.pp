@@ -21,7 +21,7 @@ class profile::openvpn::server {
     cipher      => 'AES-128-CBC',
   }
 
-  openvpn::client { ['hq', 'mobile']:}
+  openvpn::client { ['hq', 'mobile', 'remote']:}
   
   Openvpn::Client_specific_config {
     server           => 'vpnserver',
@@ -34,6 +34,10 @@ class profile::openvpn::server {
 
   openvpn::client_specific_config { 'mobile':
     ifconfig         => '10.10.10.3 255.255.255.0',
+  }
+
+  openvpn::client_specific_config { 'remote':
+    ifconfig         => '10.10.10.4 255.255.255.0',
   }
 
   # to allow saving rules
