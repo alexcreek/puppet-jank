@@ -11,7 +11,7 @@ class profile::openvpn::server {
     organization => 'Prestige Worldwide',
     email        => 'root@fuckoff.io',
     server       => '10.10.10.0 255.255.255.0',
-    push         => ['dhcp-option DNS 10.10.10.1'],
+    push         => ['dhcp-option DNS 10.10.10.1', 'redirect-gateway def1'],
   }
 
   Openvpn::Client {
@@ -25,7 +25,6 @@ class profile::openvpn::server {
   
   Openvpn::Client_specific_config {
     server           => 'vpnserver',
-    redirect_gateway => true,
   }
 
   openvpn::client_specific_config { 'hq':
