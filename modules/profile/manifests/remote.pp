@@ -19,6 +19,6 @@ class profile::remote {
   }
 
   supervisord::program { 'websocketd':
-    command => '/usr/local/sbin/websocketd --port=9001 --dir=/opt/websockets',
+    command => '/usr/local/sbin/websocketd --port=9001 --dir=/opt/remote/websockets',
   }
 }
