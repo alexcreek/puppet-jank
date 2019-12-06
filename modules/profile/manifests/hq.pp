@@ -1,7 +1,6 @@
-#
 class profile::hq {
   include profile::openvpn::client
-  include profile::rutorrent
+  include profile::hq::rutorrent
 
   service { 'docker-cordon':
     ensure => running,

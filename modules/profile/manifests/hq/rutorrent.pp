@@ -1,7 +1,4 @@
-#
-class profile::rutorrent {
-  include profile::docker
-
+class profile::hq::rutorrent {
   file { ['/opt/rutorrent',
           '/opt/rutorrent/downloads',
           '/opt/rutorrent/config/',
@@ -12,7 +9,7 @@ class profile::rutorrent {
     group  => root,
     mode   => '0755',
   }
-  
+
   vcsrepo { '/opt/rutorrent/plugins':
     ensure   => present,
     provider => git,
@@ -20,13 +17,13 @@ class profile::rutorrent {
     revision => 'master',
     require  => File['/opt/rutorrent'],
   }
-  
+
   file { '/opt/rutorrent/docker-compose.yaml':
     ensure => file,
     owner  => root,
     group  => root,
     mode   => '0755',
-    source => 'puppet:///modules/profile/rutorrent/docker-compose.yaml',
+    source => 'puppet:///modules/profile/hq/rutorrent/docker-compose.yaml',
     require => File['/opt/rutorrent'],
   }
 
@@ -35,7 +32,7 @@ class profile::rutorrent {
     owner  => root,
     group  => root,
     mode   => '0755',
-    source => 'puppet:///modules/profile/rutorrent/rtorrent.rc',
+    source => 'puppet:///modules/profile/hq/rutorrent/rtorrent.rc',
     require => File['/opt/rutorrent/config/rtorrent'],
   }
 
@@ -44,7 +41,7 @@ class profile::rutorrent {
     owner  => root,
     group  => root,
     mode   => '0755',
-    source => 'puppet:///modules/profile/rutorrent/rutorrent.service',
+    source => 'puppet:///modules/profile/hq/rutorrent/rutorrent.service',
   }
 
   service { 'rutorrent':
