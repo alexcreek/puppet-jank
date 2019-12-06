@@ -13,9 +13,7 @@ class profile::baseline::datadog (
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => epp('profile/baseline/docker-compose.yaml.epp', {
-      apikey => $profile::datadog::apikey,
-      }),
+    content => epp('profile/baseline/docker-compose.yaml.epp'),
     require => File['/opt/datadog'],
     notify  => Service['datadog'],
   }

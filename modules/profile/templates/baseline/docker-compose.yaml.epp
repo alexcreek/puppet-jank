@@ -9,7 +9,7 @@ services:
     networks:
       - datadog
     environment:
-      - API_KEY=<%= $apikey %>
+      - DD_API_KEY=<%= $profile::baseline::datadog::apikey %>
       - SD_BACKEND=docker
 networks:
   datadog:
