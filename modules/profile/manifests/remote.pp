@@ -1,9 +1,10 @@
-#
 class profile::remote {
+  include profile::openvpn::client
+
   class { 'supervisord':
     install_pip => true,
   }
-  
+
   Supervisord::Program {
     autostart   => true,
     autorestart => true,

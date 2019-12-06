@@ -5,5 +5,5 @@ defaults:
 hierarchy:
   - name: "heyra"
     paths:
-      - "common.yaml"
-      - "secrets.yaml"
+      - "common.yml"
+      - "secrets.yml"

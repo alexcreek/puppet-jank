@@ -1,4 +1,3 @@
-#
 class profile::datadog (
   $apikey,
 ) {
@@ -14,7 +13,7 @@ class profile::datadog (
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => epp('profile/datadog/docker-compose.yaml.epp', {
+    content => epp('profile/baseline/docker-compose.yaml.epp', {
       apikey => $profile::datadog::apikey,
       }),
     require => File['/opt/datadog'],
@@ -26,7 +25,7 @@ class profile::datadog (
     owner  => root,
     group  => root,
     mode   => '0644',
-    source => 'puppet:///modules/profile/datadog/datadog.service',
+    source => 'puppet:///modules/profile/baseline/datadog.service',
     notify  => Service['datadog'],
   }
 
