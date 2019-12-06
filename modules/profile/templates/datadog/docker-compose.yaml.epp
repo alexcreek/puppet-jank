@@ -1,7 +1,7 @@
 version: "2"
 services:
   datadog:
-    image: datadog/docker-dd-agent
+    image: datadog/agent:6.15.1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /proc/:/host/proc/:ro
