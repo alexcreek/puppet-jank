@@ -17,13 +17,13 @@ class profile::baseline::docker (
   package { ["linux-image-extra-${::kernelrelease}",'linux-image-extra-virtual', 'apt-transport-https', 'ca-certificates',
              'curl', 'software-properties-common']:
     ensure => installed,
-    before => Class['::profile::docker::repo'],
+    before => Apt::Source['docker'],
   }
 
   # install docker + compose
   package { 'docker-ce':
     ensure  => $version,
-    require => Class['::profile::docker::repo'],
+    require => Apt::Source['docker'],
   }
 
   exec { 'install_docker_compose':
