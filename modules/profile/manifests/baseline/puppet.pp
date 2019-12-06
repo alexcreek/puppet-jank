@@ -1,5 +1,4 @@
-#
-class profile::puppet {
+class profile::baseline::puppet {
   Service {
     provider => systemd,
   }
