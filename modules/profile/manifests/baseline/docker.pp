@@ -1,5 +1,5 @@
 class profile::baseline::docker (
-  $version = '17.09.0~ce-0~ubuntu',
+  $version = '5:19.03.5~3-0~ubuntu-xenial',
 ) {
 
   # repo
