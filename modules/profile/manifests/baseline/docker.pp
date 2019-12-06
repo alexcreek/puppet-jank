@@ -14,8 +14,8 @@ class profile::baseline::docker (
   }
 
   # deps
-  package { ["linux-image-extra-${::kernelrelease}",'linux-image-extra-virtual', 'apt-transport-https', 'ca-certificates',
-             'curl', 'software-properties-common']:
+  package { ['linux-image-extra-virtual', 'apt-transport-https', 'ca-certificates',
+              'curl', 'software-properties-common']:
     ensure => installed,
     before => Apt::Source['docker'],
   }
