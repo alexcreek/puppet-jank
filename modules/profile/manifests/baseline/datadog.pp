@@ -1,4 +1,4 @@
-class profile::datadog (
+class profile::baseline::datadog (
   $apikey,
 ) {
   file { '/opt/datadog':
