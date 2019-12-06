@@ -1,7 +1,7 @@
 version: "2"
 services:
   rutorrent:
-    image: linuxserver/rutorrent
+    image: linuxserver/rutorrent:v3.9-ls54
     ports:
       - 80:80
       - 5000:5000
@@ -22,4 +22,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 192.168.2.0/29
+        - subnet: 192.168.100.0/29

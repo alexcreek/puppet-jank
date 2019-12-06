@@ -1,4 +1,5 @@
 class profile::hq {
+  include profile::baseline
   include profile::openvpn::client
   include profile::hq::rutorrent
 

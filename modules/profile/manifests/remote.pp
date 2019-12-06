@@ -1,4 +1,5 @@
 class profile::remote {
+  include profile::baseline
   include profile::openvpn::client
 
   class { 'supervisord':

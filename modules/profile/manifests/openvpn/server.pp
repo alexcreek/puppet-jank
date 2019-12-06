@@ -1,4 +1,6 @@
 class profile::openvpn::server {
+  include profile::baseline
+
   class { 'dns':
     forward            => only,
     forwarders         => ['8.8.8.8', '8.8.4.4'],
