@@ -1,5 +1,4 @@
 # puppet-jank
-no enterprise jank here, only ubuntu
 
 ### Update and install puppet
 ```

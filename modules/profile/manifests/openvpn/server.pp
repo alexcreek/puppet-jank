@@ -19,7 +19,7 @@ class profile::openvpn::server {
     province     => 'CA',
     city         => 'San Fran',
     organization => 'Prestige Worldwide',
-    email        => 'root@fuckoff.io',
+    email        => 'root@localhost',
     server       => '10.10.10.0 255.255.255.0',
     push         => ['dhcp-option DNS 10.10.10.1', 'redirect-gateway def1'],
   }
